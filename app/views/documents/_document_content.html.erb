@@ -1,7 +1,10 @@
 <div class="container-fluid">
-  <%= text_area_tag(:description, @current_document.description) %>
-  <%= link_to "Save", document_path(@current_document.id), :method => :put, :remote => true, :class => "btn button-gray" %>
-  <%= link_to "Delete", document_path(@current_document.id), :method => :delete, :remote => true, :class => "btn button-gray", data: {confirm: "Are you sure to delete this document?"} %>
+	<% @document = @current_document %>
+	<%= form_for @document, url: document_path(@current_document.id), :method => :put, remote: true do |f| %>
+  	<%= f.text_area :description %>
+  	<%= f.submit "Save", class: "btn button-gray" %>
+  	<%= link_to "Delete", document_path(@current_document.id), :method => :delete, :remote => true, :class => "btn button-gray", data: {confirm: "Are you sure to delete this document?"} %>
+  <% end %>
 </div>
 <div class="container-fluid">
   <%= @current_document.description.html_safe %>

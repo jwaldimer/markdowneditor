@@ -1,4 +1,4 @@
 <% @current_document = @document %>
 $(".active").removeClass("active");
-$("#document-"+ <%= @document.id %>).addClass('active');
+$("#document-"+ <%= @document.id %>+" a").addClass('active');
 $('#content').html('<%= j render partial: 'document_content' %>');

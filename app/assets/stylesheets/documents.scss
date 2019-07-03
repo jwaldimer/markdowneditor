@@ -116,12 +116,15 @@ i.document-icon {
   &:first-child {
     text-align: right;
   }
+  form {
+    height: 100%;
 
-  textarea {
-    width: 100%;
-    height: calc(100% - 35px);
-    border: none;
-    resize: none;
+    textarea {
+      width: 100%;
+      height: calc(100% - 35px);
+      border: none;
+      resize: none;
+    }
   }
 }
 

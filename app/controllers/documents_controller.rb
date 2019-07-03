@@ -32,6 +32,8 @@ class DocumentsController < ApplicationController
 
   def update
   	if @document.update(document_params)
+  		@documents = Document.all
+  		@current_document = @document
   		render :show, status: :ok
   	else
   		render json: @document.errors, status: :unprocessable_entity 
