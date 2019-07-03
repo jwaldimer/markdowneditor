@@ -1,1 +1,2 @@
-$("#document-<%= @document.id %>").remove();
+$('#document-list').html('<%= j render partial: 'document_item' %>');
+$('#content').html('<%= j render partial: 'document_content' %>');

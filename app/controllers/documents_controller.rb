@@ -19,14 +19,15 @@ class DocumentsController < ApplicationController
   		@document.description = "#{@document.name} description..."
   	end
   	if @document.save
+  		@current_document = @document
+  		@documents = Document.all
   		render :show, status: :created
   	else
   		render json: @document.errors, status: :unprocessable_entity 
   	end
   end
 
-  def edit
-  	
+  def edit  	
   end
 
   def update
@@ -39,6 +40,8 @@ class DocumentsController < ApplicationController
 
   def destroy
   	@document.destroy
+  	@documents = Document.all
+  	@current_document = Document.first
   end
 
 

@@ -1,4 +1,4 @@
-$('.new-doc').modal('hide');
-$('#document-list').html('<%= j render partial: 'document_item' %>');
 <% @current_document = @document %>
+$(".active").removeClass("active");
+$("#document-"+ <%= @document.id %>).addClass('active');
 $('#content').html('<%= j render partial: 'document_content' %>');

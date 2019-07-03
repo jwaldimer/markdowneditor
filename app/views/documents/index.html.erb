@@ -6,24 +6,19 @@
     </header>
     <ul class="nav" id="document-list">
     	<li>
-        <a href="#" data-toggle="modal" data-target=".new-doc">
+        <a href="#" data-toggle="modal" data-target=".new-doc" title="New document">
           <%= image_tag("add.png", class: "pull-left add-image") %>
           <p>New document</p>
         </a>
       </li>
-    	<% @documents.each do |document| %>
-    		<%= render :partial => "document_item", locals: {document: document}%>
-	    <% end %>
+    	<%= render :partial => "document_item"%>
     </ul>
   </div>
 
-
   <!-- Content -->
   <div id="content">
-    <%= render :partial => "document_content", locals: {current_document: @current_document}%>
+    <%= render :partial => "document_content" %>
   </div>
-
-
 </div>
 
 

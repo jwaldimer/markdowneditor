@@ -1,7 +1,10 @@
-<li id='<%= "document-#{document.id}"%>'>
-	<%= link_to edit_document_path(document.id), options = { :remote => true }, html_options = { :title=> document.name } do %>
-    <%= image_tag("document.png", class: "pull-left") %> 
-    <p><%= truncate(document.name, length: 22) %></p>
-    <span><%= document_old(document.updated_at) %> days ago</span>
-  <% end %>
-</li>
+<% @documents.each do |document| %>
+	<li id='<%= "document-#{document.id}"%>'>
+		<% active =  @current_document.id == document.id ? "active" : "" %>
+		<%= link_to edit_document_path(document.id), options = { :remote => true, :class=> active, :title=> document.name } do %>
+	    <%= image_tag("document.png", class: "pull-left") %> 
+	    <p><%= truncate(document.name, length: 22) %></p>
+	    <span><%= document_old(document.updated_at) %> days ago</span>
+	  <% end %>
+	</li>
+<% end %>
