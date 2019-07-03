@@ -4,7 +4,7 @@
     <header>
       <a href="#">MarkdownEditor</a>
     </header>
-    <ul class="nav">
+    <ul class="nav" id="document-list">
     	<li>
         <a href="#" data-toggle="modal" data-target=".new-doc">
           <%= image_tag("add.png", class: "pull-left add-image") %>
@@ -12,13 +12,7 @@
         </a>
       </li>
     	<% @documents.each do |document| %>
-	      <li>
-	        <a href="#" title="<%= document.name %>">
-	          <%= image_tag("document.png", class: "pull-left") %> 
-	          <p><%= truncate(document.name, length: 22) %></p>
-	          <span><%= document_old(document.updated_at) %> days ago</span>
-	        </a>
-	      </li>
+    		<%= render :partial => "document_item", locals: {document: document}%>
 	    <% end %>
     </ul>
   </div>
@@ -26,33 +20,31 @@
 
   <!-- Content -->
   <div id="content">
-    <div class="container-fluid">
-      <%= text_area_tag(:description, @documents.last.description) %>
-			<button class="btn">Save</button>
-			<button class="btn">Delete</button>
-    </div>
-    <div class="container-fluid">
-      <%= @documents.last.description.html_safe %>
-    </div>
+    <%= render :partial => "document_content", locals: {current_document: @current_document}%>
   </div>
 
 
 </div>
 
 
-<div class="modal fade new-doc" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+<div class="modal fade new-doc bs-example-modal-sm" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">New Document</h4>
       </div>
       <div class="modal-body">
-        <p>One fine body&hellip;</p>
+        <%= form_for :document, url: {action: "create"}, remote: true do |f| %>
+				  <div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><%= f.label :name, class: "no-m" %></span>
+					  <%= f.text_field :name, class: "form-control" %>
+					</div>				
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default button-simple" data-dismiss="modal">Close</button>
-        <button type="button" class="btn button-gray">Save</button>
+        	<%= f.submit "Create", class: "btn button-gray" %>  
+        <% end %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

@@ -1,0 +1,8 @@
+<div class="container-fluid">
+  <%= text_area_tag(:description, document.description) %>
+  <%= link_to "Save", document_path(document.id), :method => "PUT", :remote => true, :class => "btn button-gray" %>
+  <%= link_to "Delete", document_path(document.id), :method => "DELETE", :remote => true, :class => "btn button-gray" %>
+</div>
+<div class="container-fluid">
+  <%= document.description.html_safe %>
+</div>

@@ -1,0 +1,7 @@
+<li id='<%= "document-#{document.id}"%>'>
+	<%= link_to edit_document_path(document.id), options = { :remote => true }, html_options = { :title=> document.name } do %>
+    <%= image_tag("document.png", class: "pull-left") %> 
+    <p><%= truncate(document.name, length: 22) %></p>
+    <span><%= document_old(document.updated_at) %> days ago</span>
+  <% end %>
+</li>
