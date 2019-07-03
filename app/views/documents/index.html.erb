@@ -5,62 +5,55 @@
       <a href="#">MarkdownEditor</a>
     </header>
     <ul class="nav">
-      <li>
-        <a href="#">
-          <i class="zmdi zmdi-view-dashboard"></i> Dashboard
+    	<li>
+        <a href="#" data-toggle="modal" data-target=".new-doc">
+          <%= image_tag("add.png", class: "pull-left add-image") %>
+          <p>New document</p>
         </a>
       </li>
-      <li>
-        <a href="#">
-          <i class="zmdi zmdi-link"></i> Shortcuts
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="zmdi zmdi-widgets"></i> Overview
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="zmdi zmdi-calendar"></i> Events
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="zmdi zmdi-info-outline"></i> About
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="zmdi zmdi-settings"></i> Services
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="zmdi zmdi-comment-more"></i> Contact
-        </a>
-      </li>
+    	<% @documents.each do |document| %>
+	      <li>
+	        <a href="#" title="<%= document.name %>">
+	          <%= image_tag("document.png", class: "pull-left") %> 
+	          <p><%= truncate(document.name, length: 22) %></p>
+	          <span><%= document_old(document.updated_at) %> days ago</span>
+	        </a>
+	      </li>
+	    <% end %>
     </ul>
   </div>
+
+
   <!-- Content -->
   <div id="content">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
-            </a>
-          </li>
-          <li><a href="#">Test User</a></li>
-        </ul>
-      </div>
-    </nav>
     <div class="container-fluid">
-      <h1>Simple Sidebar</h1>
-      <p>
-        Make sure to keep all page content within the 
-        <code>#content</code>.
-      </p>
+      <%= text_area_tag(:description, @documents.last.description) %>
+			<button class="btn">Save</button>
+			<button class="btn">Delete</button>
+    </div>
+    <div class="container-fluid">
+      <%= @documents.last.description.html_safe %>
     </div>
   </div>
+
+
 </div>
+
+
+<div class="modal fade new-doc" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">New Document</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default button-simple" data-dismiss="modal">Close</button>
+        <button type="button" class="btn button-gray">Save</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

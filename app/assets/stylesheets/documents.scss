@@ -2,7 +2,7 @@
 
 body {
   overflow-x: hidden;
-  font-family: 'Roboto', sans-serif;
+  //font-family: 'Roboto', sans-serif;
   font-size: 16px;
 }
 
@@ -18,6 +18,7 @@ body {
 
 #content {
   width: 100%;
+  height: 100vh;
   position: relative;
   margin-right: 0;
 }
@@ -31,8 +32,9 @@ body {
   width: 250px;
   height: 100%;
   margin-left: -250px;
+  border-right: 1px solid #b8b8b8;
   overflow-y: auto;
-  background: #37474F;
+  background: #e5e5e5;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -40,10 +42,11 @@ body {
 }
 
 #sidebar header {
-  background-color: #263238;
+  background-color: #4f4f4f;
   font-size: 20px;
   line-height: 52px;
   text-align: center;
+  padding: 6px;
 }
 
 #sidebar header a {
@@ -62,17 +65,91 @@ body {
 
 #sidebar .nav a{
   background: none;
-  border-bottom: 1px solid #455A64;
-  color: #CFD8DC;
-  font-size: 14px;
-  padding: 16px 24px;
+  border-bottom: 1px solid #e5e5e5;
+  color: #101010;
+  padding: 15px 5px 15px 20px;
+  font-weight: 550;
 }
 
-#sidebar .nav a:hover{
-  background: none;
-  color: #ECEFF1;
+#sidebar .nav a.active, #sidebar .nav a:hover{
+  background: #828282;
+  border: 1px solid #4f4f4f;
+  color: #fff;
 }
 
 #sidebar .nav a i{
   margin-right: 16px;
+}
+
+#sidebar .nav a span{
+  font-size: 13px;
+  color: #a9a9a9;
+  margin: 0px;
+  padding-left: 10px;
+}
+
+#sidebar .nav a p{
+  padding-left: 10px;
+  margin: 0px;
+  width: 195px;
+  height: 20px;
+  max-width: 195px;
+  overflow: hidden;
+  display: inline-flex;  
+}
+
+i.document-icon {
+  object-fit: cover;
+  background: asset-url("document.png");
+  width: 15px;
+  height: 30px;
+  background-position: center;
+}
+
+.container-fluid {
+  float: left;
+  width: 50%;
+  padding: 30px 30px 10px 30px;
+  border-right: 1px solid #b8b8b8;
+  height: 100%;
+
+  &:first-child {
+    text-align: right;
+  }
+
+  textarea {
+    width: 100%;
+    height: calc(100% - 35px);
+    border: none;
+    resize: none;
+  }
+}
+
+.button-gray {
+  width: 100px;
+  height: 30px;
+  background-color: #4f4f4f;
+  color: white;
+  border-radius: 0px;
+  margin-left: 5px;
+  text-align: center;
+  padding: 4px 12px;
+}
+
+.button-simple {
+  height: 30px;
+  border-radius: 0px;
+}
+
+.add-image {
+  padding: 3px 0px 0px 5px;
+}
+
+.modal-header {
+  background-color: #4f4f4f;
+  color: white;
+}
+
+.modal-content {
+  border-radius: 0px;
 }
