@@ -1,27 +1,44 @@
 class DocumentsController < ApplicationController
-	before_action :set_document, :only => [:show, :update, :destroy]
+	before_action :set_document, :only => [:show, :edit, :update, :destroy]
 
   def index
   	@documents = Document.all
+  	@current_document = @documents.first
   end
 
   def show
   end
 
   def new
-  	
+  	@document = Document.new
   end
 
   def create
+  	@document = Document.new(document_params)
+  	if @document.description.nil?
+  		@document.description = "#{@document.name} description..."
+  	end
+  	if @document.save
+  		render :show, status: :created
+  	else
+  		render json: @document.errors, status: :unprocessable_entity 
+  	end
+  end
+
+  def edit
   	
   end
 
   def update
-  	
+  	if @document.update(document_params)
+  		render :show, status: :ok
+  	else
+  		render json: @document.errors, status: :unprocessable_entity 
+  	end
   end
 
   def destroy
-  	
+  	@document.destroy
   end
 
 
@@ -29,5 +46,9 @@ class DocumentsController < ApplicationController
 
   	def set_document
   		@document = Document.find(params[:id])
+  	end
+
+  	def document_params
+  		params.require(:document).permit(:name, :description)  		
   	end
 end
