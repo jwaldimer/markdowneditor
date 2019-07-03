@@ -7,5 +7,5 @@
   <% end %>
 </div>
 <div class="container-fluid">
-  <%= @current_document.description.html_safe %>
+  <%= markdown(@current_document.description) %>
 </div>
