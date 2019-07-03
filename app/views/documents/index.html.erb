@@ -4,13 +4,13 @@
     <header>
       <a href="#">MarkdownEditor</a>
     </header>
+    <div class="new-document">
+	    <a href="#" data-toggle="modal" data-target=".new-doc" title="New document">
+	      <%= image_tag("add.png", class: "pull-left add-image") %>
+	      <p>New document</p>
+	    </a>
+	  </div>
     <ul class="nav" id="document-list">
-    	<li>
-        <a href="#" data-toggle="modal" data-target=".new-doc" title="New document">
-          <%= image_tag("add.png", class: "pull-left add-image") %>
-          <p>New document</p>
-        </a>
-      </li>
     	<%= render :partial => "document_item"%>
     </ul>
   </div>
