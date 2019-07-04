@@ -15,4 +15,6 @@
 //= require jquery
 //= require bootstrap
 //= require turbolinks
+//= require showdown
+//= custom
 //= require_tree .
