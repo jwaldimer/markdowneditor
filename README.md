@@ -43,7 +43,7 @@ Go to http://localhost:3000 and enjoy the app.
 
 ### Live Video Test
 
-Go to http://localhost:3000 to see the app running in a video.
+Go to https://youtu.be/kD2cm7u_zUA to see the app running in a video test.
 
 ### Author
 * **Jorge Gómez**
