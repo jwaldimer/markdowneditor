@@ -2,3 +2,7 @@ $('.new-doc').modal('hide');
 $('#document-list').html('<%= j render partial: 'document_item' %>');
 <% @current_document = @document %>
 $('#content').html('<%= j render partial: 'document_content' %>');
+
+<% unless @new_doc %>
+	alert("Document saved successfully!");
+<% end %>

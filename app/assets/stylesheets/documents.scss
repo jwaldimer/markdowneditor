@@ -149,6 +149,7 @@ i.document-icon {
   padding: 30px 30px 10px 30px;
   border-right: 1px solid #b8b8b8;
   height: 100%;
+  overflow: auto;
 
   &:first-child {
     text-align: right;

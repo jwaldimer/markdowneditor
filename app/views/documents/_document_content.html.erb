@@ -1,11 +1,13 @@
 <div class="container-fluid">
-	<% @document = @current_document %>
-	<%= form_for @document, url: document_path(@current_document.id), :method => :put, remote: true do |f| %>
-  	<%= f.text_area :description %>
-  	<%= f.submit "Save", class: "btn button-gray" %>
-  	<%= link_to "Delete", document_path(@current_document.id), :method => :delete, :remote => true, :class => "btn button-gray", data: {confirm: "Are you sure to delete this document?"} %>
-  <% end %>
+	<% if @current_document.present? %>
+		<% @document = @current_document %>
+		<%= form_for @document, url: document_path(@current_document.id), :method => :put, remote: true do |f| %>
+	  	<%= f.text_area :description, onkeyup: "changeRenderText(this.value)" %>
+	  	<%= f.submit "Save", class: "btn button-gray" %>
+	  	<%= link_to "Delete", document_path(@current_document.id), :method => :delete, :remote => true, :class => "btn button-gray", data: {confirm: "Are you sure to delete this document?"} %>
+	  <% end %>
+	<% end %>
 </div>
-<div class="container-fluid">
-  <%= markdown(@current_document.description) %>
+<div class="container-fluid" id="rendered-text">
+  <%= markdown(@current_document.description) if @current_document.present? %>
 </div>

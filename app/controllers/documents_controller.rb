@@ -16,11 +16,16 @@ class DocumentsController < ApplicationController
   def create
   	@document = Document.new(document_params)
   	if @document.description.nil?
-  		@document.description = "#{@document.name} description..."
+  		@document.description = "### #{@document.name} markdown code..."
   	end
+    
   	if @document.save
   		@current_document = @document
   		@documents = Document.all
+      @new_doc = true
+      if @document.name == ""
+        @document.update(name: "Document #{@document.id}")
+      end
   		render :show, status: :created
   	else
   		render json: @document.errors, status: :unprocessable_entity 
@@ -34,6 +39,7 @@ class DocumentsController < ApplicationController
   	if @document.update(document_params)
   		@documents = Document.all
   		@current_document = @document
+      @new_doc = false
   		render :show, status: :ok
   	else
   		render json: @document.errors, status: :unprocessable_entity 
